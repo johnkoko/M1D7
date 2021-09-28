@@ -3,8 +3,8 @@
 <head>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
   <style>
-    .giant-font {
-      font-size: 3em;
+    .increase-font {
+      font-size: 2em;
     }
     .hidden {
       visibility: hidden;
@@ -105,10 +105,61 @@
 
   <input type="text", id="section2" />
 
+
+  <button onclick="changeH1Text()">Change H1</button>
+  <button onclick="changeBackgroundColor()">Change Background</button>
+  <button onclick="changeFakeAddress()">Change Address</button>
+  <button onclick="addClassToLinks()">Add Class to Links</button>
+  <button onclick="toggleImagesClass()">Toggle Images</button>
+  <button onclick="putRandomColor()">Put Random Color</button>
+
+
   <footer>
     <div>My Store</div>
     <div>24 Northcote Street, Newcastle under-Lyne</div>
   </footer>
 
-  
+  <script>
+    function changeH1Text() {
+      document.querySelector("h1").innerHTML = "My Store Has Changed!";
+    }
+    
+
+    function changeBackgroundColor() {
+      document.querySelector("body").style.backgroundColor = "gray";
+    }
+
+    function changeFakeAddress() {
+      document.querySelector("footer > div:nth-child(2)").innerHTML =
+        "Fake Address: Clement Street, London.";
+    }
+
+    function addClassToLinks() {
+      for (let node of document.querySelectorAll("a")) {
+        node.classList.add("increase-font");
+      }
+    }
+
+    function toggleImagesClass() {
+      for (let image of document.querySelectorAll("img")) {
+        image.classList.toggle("hidden");
+      }
+    }
+
+    function putRandomColor() {
+      const color = getRandomColor();
+
+      for (let price of document.querySelectorAll("tr > td:nth-child(4)")) {
+        price.style.color = color;
+      }
+    }
+
+    function getRandomColor() {
+      const red = Math.round(Math.random() * 255);
+      const green = Math.round(Math.random() * 255);
+      const blue = Math.round(Math.random() * 255);
+
+      return "rgb(" + red + ", " + green + ", " + blue + ")";
+    }
+  </script>
 </body>
